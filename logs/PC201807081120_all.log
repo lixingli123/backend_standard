@@ -1,0 +1,14 @@
+599 2020-02-11 18:00:49.717 [  ] I [c.m.Application] [Application] 名校家长圈小程序后端系统正在启动中……
+2014 2020-02-11 18:00:51.132 [  ] I [o.h.v.i.u.Version] [Version] HV000001: Hibernate Validator 5.2.4.Final
+2296 2020-02-11 18:00:51.414 [  ] I [c.m.Application] [StartupInfoLogger] Starting Application on PC201807081120 with PID 5908 (D:\working_20200208\backend\target\classes started by Administrator in D:\working_20200208\backend)
+2297 2020-02-11 18:00:51.415 [  ] I [c.m.Application] [SpringApplication] No active profile set, falling back to default profiles: default
+5722 2020-02-11 18:00:54.840 [  ] I [o.a.c.c.StandardService] [DirectJDKLog] Starting service Tomcat
+5725 2020-02-11 18:00:54.843 [  ] I [o.a.c.c.StandardEngine] [DirectJDKLog] Starting Servlet Engine: Apache Tomcat/8.5.11
+5950 2020-02-11 18:00:55.068 [  ] I [o.a.c.c.C.[.[.[/]] [DirectJDKLog] Initializing Spring embedded WebApplicationContext
+8580 2020-02-11 18:00:57.698 [  ] I [o.a.c.h.Http11NioProtocol] [DirectJDKLog] Initializing ProtocolHandler ["http-nio-8080"]
+8608 2020-02-11 18:00:57.726 [  ] I [o.a.c.h.Http11NioProtocol] [DirectJDKLog] Starting ProtocolHandler [http-nio-8080]
+8628 2020-02-11 18:00:57.746 [  ] I [o.a.t.u.n.NioSelectorPool] [DirectJDKLog] Using a shared selector for servlet write/read
+8680 2020-02-11 18:00:57.798 [  ] I [c.m.Application] [StartupInfoLogger] Started Application in 7.765 seconds (JVM running for 9.099)
+8681 2020-02-11 18:00:57.799 [  ] I [c.m.Application] [Application] 名校家长圈小程序后端系统启动成功！！！！
+21879 2020-02-11 18:01:10.997 [  ] I [o.a.c.c.C.[.[.[/]] [DirectJDKLog] Initializing Spring FrameworkServlet 'dispatcherServlet'
+53981 2020-02-11 18:01:43.099 [  ] I [c.m.c.CourseController] [CourseController] 查询课程***********1

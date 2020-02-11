@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mxjzq.mapper.StudentFirstAccessMapper" >
+  <resultMap id="BaseResultMap" type="com.mxjzq.entity.StudentFirstAccess" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="student_id" property="studentId" jdbcType="INTEGER" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="TINYINT" />
+    <result column="future_path" property="futurePath" jdbcType="VARCHAR" />
+    <result column="go_school_goal" property="goSchoolGoal" jdbcType="VARCHAR" />
+    <result column="achievement_goal" property="achievementGoal" jdbcType="VARCHAR" />
+    <result column="study_habit" property="studyHabit" jdbcType="VARCHAR" />
+    <result column="good_habit" property="goodHabit" jdbcType="VARCHAR" />
+    <result column="bad_habit" property="badHabit" jdbcType="VARCHAR" />
+    <result column="chinese_achievement" property="chineseAchievement" jdbcType="VARCHAR" />
+    <result column="chinese_read_ability" property="chineseReadAbility" jdbcType="VARCHAR" />
+    <result column="chinese_augment_side" property="chineseAugmentSide" jdbcType="VARCHAR" />
+    <result column="english_achievement" property="englishAchievement" jdbcType="VARCHAR" />
+    <result column="english_read_ability" property="englishReadAbility" jdbcType="VARCHAR" />
+    <result column="english_augment_side" property="englishAugmentSide" jdbcType="VARCHAR" />
+    <result column="math_achievement" property="mathAchievement" jdbcType="VARCHAR" />
+    <result column="math_out_study" property="mathOutStudy" jdbcType="VARCHAR" />
+    <result column="math_augment_side" property="mathAugmentSide" jdbcType="VARCHAR" />
+    <result column="is_delete" property="isDelete" jdbcType="TINYINT" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="creator" property="creator" jdbcType="VARCHAR" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="updator" property="updator" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, student_id, phone, type, future_path, go_school_goal, achievement_goal, study_habit, 
+    good_habit, bad_habit, chinese_achievement, chinese_read_ability, chinese_augment_side, 
+    english_achievement, english_read_ability, english_augment_side, math_achievement, 
+    math_out_study, math_augment_side, is_delete, create_time, creator, update_time, 
+    updator
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from student_first_assess
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from student_first_assess
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.mxjzq.entity.StudentFirstAccess" >
+    insert into student_first_assess (id, student_id, phone, 
+      type, future_path, go_school_goal, 
+      achievement_goal, study_habit, good_habit, 
+      bad_habit, chinese_achievement, chinese_read_ability, 
+      chinese_augment_side, english_achievement, 
+      english_read_ability, english_augment_side, 
+      math_achievement, math_out_study, math_augment_side, 
+      is_delete, create_time, creator, 
+      update_time, updator)
+    values (#{id,jdbcType=INTEGER}, #{studentId,jdbcType=INTEGER}, #{phone,jdbcType=VARCHAR}, 
+      #{type,jdbcType=TINYINT}, #{futurePath,jdbcType=VARCHAR}, #{goSchoolGoal,jdbcType=VARCHAR}, 
+      #{achievementGoal,jdbcType=VARCHAR}, #{studyHabit,jdbcType=VARCHAR}, #{goodHabit,jdbcType=VARCHAR}, 
+      #{badHabit,jdbcType=VARCHAR}, #{chineseAchievement,jdbcType=VARCHAR}, #{chineseReadAbility,jdbcType=VARCHAR}, 
+      #{chineseAugmentSide,jdbcType=VARCHAR}, #{englishAchievement,jdbcType=VARCHAR}, 
+      #{englishReadAbility,jdbcType=VARCHAR}, #{englishAugmentSide,jdbcType=VARCHAR}, 
+      #{mathAchievement,jdbcType=VARCHAR}, #{mathOutStudy,jdbcType=VARCHAR}, #{mathAugmentSide,jdbcType=VARCHAR}, 
+      #{isDelete,jdbcType=TINYINT}, #{createTime,jdbcType=TIMESTAMP}, #{creator,jdbcType=VARCHAR}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{updator,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.mxjzq.entity.StudentFirstAccess" >
+    insert into student_first_assess
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="studentId != null" >
+        student_id,
+      </if>
+      <if test="phone != null" >
+        phone,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="futurePath != null" >
+        future_path,
+      </if>
+      <if test="goSchoolGoal != null" >
+        go_school_goal,
+      </if>
+      <if test="achievementGoal != null" >
+        achievement_goal,
+      </if>
+      <if test="studyHabit != null" >
+        study_habit,
+      </if>
+      <if test="goodHabit != null" >
+        good_habit,
+      </if>
+      <if test="badHabit != null" >
+        bad_habit,
+      </if>
+      <if test="chineseAchievement != null" >
+        chinese_achievement,
+      </if>
+      <if test="chineseReadAbility != null" >
+        chinese_read_ability,
+      </if>
+      <if test="chineseAugmentSide != null" >
+        chinese_augment_side,
+      </if>
+      <if test="englishAchievement != null" >
+        english_achievement,
+      </if>
+      <if test="englishReadAbility != null" >
+        english_read_ability,
+      </if>
+      <if test="englishAugmentSide != null" >
+        english_augment_side,
+      </if>
+      <if test="mathAchievement != null" >
+        math_achievement,
+      </if>
+      <if test="mathOutStudy != null" >
+        math_out_study,
+      </if>
+      <if test="mathAugmentSide != null" >
+        math_augment_side,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="creator != null" >
+        creator,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="updator != null" >
+        updator,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="studentId != null" >
+        #{studentId,jdbcType=INTEGER},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=TINYINT},
+      </if>
+      <if test="futurePath != null" >
+        #{futurePath,jdbcType=VARCHAR},
+      </if>
+      <if test="goSchoolGoal != null" >
+        #{goSchoolGoal,jdbcType=VARCHAR},
+      </if>
+      <if test="achievementGoal != null" >
+        #{achievementGoal,jdbcType=VARCHAR},
+      </if>
+      <if test="studyHabit != null" >
+        #{studyHabit,jdbcType=VARCHAR},
+      </if>
+      <if test="goodHabit != null" >
+        #{goodHabit,jdbcType=VARCHAR},
+      </if>
+      <if test="badHabit != null" >
+        #{badHabit,jdbcType=VARCHAR},
+      </if>
+      <if test="chineseAchievement != null" >
+        #{chineseAchievement,jdbcType=VARCHAR},
+      </if>
+      <if test="chineseReadAbility != null" >
+        #{chineseReadAbility,jdbcType=VARCHAR},
+      </if>
+      <if test="chineseAugmentSide != null" >
+        #{chineseAugmentSide,jdbcType=VARCHAR},
+      </if>
+      <if test="englishAchievement != null" >
+        #{englishAchievement,jdbcType=VARCHAR},
+      </if>
+      <if test="englishReadAbility != null" >
+        #{englishReadAbility,jdbcType=VARCHAR},
+      </if>
+      <if test="englishAugmentSide != null" >
+        #{englishAugmentSide,jdbcType=VARCHAR},
+      </if>
+      <if test="mathAchievement != null" >
+        #{mathAchievement,jdbcType=VARCHAR},
+      </if>
+      <if test="mathOutStudy != null" >
+        #{mathOutStudy,jdbcType=VARCHAR},
+      </if>
+      <if test="mathAugmentSide != null" >
+        #{mathAugmentSide,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=TINYINT},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creator != null" >
+        #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updator != null" >
+        #{updator,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mxjzq.entity.StudentFirstAccess" >
+    update student_first_assess
+    <set >
+      <if test="studentId != null" >
+        student_id = #{studentId,jdbcType=INTEGER},
+      </if>
+      <if test="phone != null" >
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=TINYINT},
+      </if>
+      <if test="futurePath != null" >
+        future_path = #{futurePath,jdbcType=VARCHAR},
+      </if>
+      <if test="goSchoolGoal != null" >
+        go_school_goal = #{goSchoolGoal,jdbcType=VARCHAR},
+      </if>
+      <if test="achievementGoal != null" >
+        achievement_goal = #{achievementGoal,jdbcType=VARCHAR},
+      </if>
+      <if test="studyHabit != null" >
+        study_habit = #{studyHabit,jdbcType=VARCHAR},
+      </if>
+      <if test="goodHabit != null" >
+        good_habit = #{goodHabit,jdbcType=VARCHAR},
+      </if>
+      <if test="badHabit != null" >
+        bad_habit = #{badHabit,jdbcType=VARCHAR},
+      </if>
+      <if test="chineseAchievement != null" >
+        chinese_achievement = #{chineseAchievement,jdbcType=VARCHAR},
+      </if>
+      <if test="chineseReadAbility != null" >
+        chinese_read_ability = #{chineseReadAbility,jdbcType=VARCHAR},
+      </if>
+      <if test="chineseAugmentSide != null" >
+        chinese_augment_side = #{chineseAugmentSide,jdbcType=VARCHAR},
+      </if>
+      <if test="englishAchievement != null" >
+        english_achievement = #{englishAchievement,jdbcType=VARCHAR},
+      </if>
+      <if test="englishReadAbility != null" >
+        english_read_ability = #{englishReadAbility,jdbcType=VARCHAR},
+      </if>
+      <if test="englishAugmentSide != null" >
+        english_augment_side = #{englishAugmentSide,jdbcType=VARCHAR},
+      </if>
+      <if test="mathAchievement != null" >
+        math_achievement = #{mathAchievement,jdbcType=VARCHAR},
+      </if>
+      <if test="mathOutStudy != null" >
+        math_out_study = #{mathOutStudy,jdbcType=VARCHAR},
+      </if>
+      <if test="mathAugmentSide != null" >
+        math_augment_side = #{mathAugmentSide,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=TINYINT},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creator != null" >
+        creator = #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updator != null" >
+        updator = #{updator,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mxjzq.entity.StudentFirstAccess" >
+    update student_first_assess
+    set student_id = #{studentId,jdbcType=INTEGER},
+      phone = #{phone,jdbcType=VARCHAR},
+      type = #{type,jdbcType=TINYINT},
+      future_path = #{futurePath,jdbcType=VARCHAR},
+      go_school_goal = #{goSchoolGoal,jdbcType=VARCHAR},
+      achievement_goal = #{achievementGoal,jdbcType=VARCHAR},
+      study_habit = #{studyHabit,jdbcType=VARCHAR},
+      good_habit = #{goodHabit,jdbcType=VARCHAR},
+      bad_habit = #{badHabit,jdbcType=VARCHAR},
+      chinese_achievement = #{chineseAchievement,jdbcType=VARCHAR},
+      chinese_read_ability = #{chineseReadAbility,jdbcType=VARCHAR},
+      chinese_augment_side = #{chineseAugmentSide,jdbcType=VARCHAR},
+      english_achievement = #{englishAchievement,jdbcType=VARCHAR},
+      english_read_ability = #{englishReadAbility,jdbcType=VARCHAR},
+      english_augment_side = #{englishAugmentSide,jdbcType=VARCHAR},
+      math_achievement = #{mathAchievement,jdbcType=VARCHAR},
+      math_out_study = #{mathOutStudy,jdbcType=VARCHAR},
+      math_augment_side = #{mathAugmentSide,jdbcType=VARCHAR},
+      is_delete = #{isDelete,jdbcType=TINYINT},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      creator = #{creator,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      updator = #{updator,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

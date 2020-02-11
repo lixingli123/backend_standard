@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mxjzq.mapper.CourseFragmentMapper" >
+  <resultMap id="BaseResultMap" type="com.mxjzq.entity.CourseFragment" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="subjectcode" property="subjectcode" jdbcType="VARCHAR" />
+    <result column="gradecode" property="gradecode" jdbcType="VARCHAR" />
+    <result column="teachingcode" property="teachingcode" jdbcType="VARCHAR" />
+    <result column="knowledge" property="knowledge" jdbcType="VARCHAR" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="content" property="content" jdbcType="VARCHAR" />
+    <result column="price" property="price" jdbcType="DOUBLE" />
+    <result column="promotePrice" property="promoteprice" jdbcType="DOUBLE" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
+    <result column="interval" property="interval" jdbcType="BIGINT" />
+    <result column="totalFenshu" property="totalfenshu" jdbcType="VARCHAR" />
+    <result column="fenshuFlag" property="fenshuflag" jdbcType="INTEGER" />
+    <result column="averageFenshu" property="averagefenshu" jdbcType="VARCHAR" />
+    <result column="groupCode" property="groupcode" jdbcType="VARCHAR" />
+    <result column="reportFlag" property="reportflag" jdbcType="INTEGER" />
+    <result column="userId" property="userid" jdbcType="INTEGER" />
+    <result column="createtime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="type" property="type" jdbcType="INTEGER" />
+    <result column="shareImage" property="shareimage" jdbcType="VARCHAR" />
+    <result column="url" property="url" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, subjectcode, gradecode, teachingcode, knowledge, title, content, price, promotePrice, 
+    status, interval, totalFenshu, fenshuFlag, averageFenshu, groupCode, reportFlag, 
+    userId, createtime, type, shareImage, url
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from course_fragment
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from course_fragment
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.mxjzq.entity.CourseFragment" >
+    insert into course_fragment (id, subjectcode, gradecode, 
+      teachingcode, knowledge, title, 
+      content, price, promotePrice, 
+      status, interval, totalFenshu, 
+      fenshuFlag, averageFenshu, groupCode, 
+      reportFlag, userId, createtime, 
+      type, shareImage, url
+      )
+    values (#{id,jdbcType=INTEGER}, #{subjectcode,jdbcType=VARCHAR}, #{gradecode,jdbcType=VARCHAR}, 
+      #{teachingcode,jdbcType=VARCHAR}, #{knowledge,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, 
+      #{content,jdbcType=VARCHAR}, #{price,jdbcType=DOUBLE}, #{promoteprice,jdbcType=DOUBLE}, 
+      #{status,jdbcType=VARCHAR}, #{interval,jdbcType=BIGINT}, #{totalfenshu,jdbcType=VARCHAR}, 
+      #{fenshuflag,jdbcType=INTEGER}, #{averagefenshu,jdbcType=VARCHAR}, #{groupcode,jdbcType=VARCHAR}, 
+      #{reportflag,jdbcType=INTEGER}, #{userid,jdbcType=INTEGER}, #{createtime,jdbcType=TIMESTAMP}, 
+      #{type,jdbcType=INTEGER}, #{shareimage,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.mxjzq.entity.CourseFragment" >
+    insert into course_fragment
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="subjectcode != null" >
+        subjectcode,
+      </if>
+      <if test="gradecode != null" >
+        gradecode,
+      </if>
+      <if test="teachingcode != null" >
+        teachingcode,
+      </if>
+      <if test="knowledge != null" >
+        knowledge,
+      </if>
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+      <if test="price != null" >
+        price,
+      </if>
+      <if test="promoteprice != null" >
+        promotePrice,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="interval != null" >
+        interval,
+      </if>
+      <if test="totalfenshu != null" >
+        totalFenshu,
+      </if>
+      <if test="fenshuflag != null" >
+        fenshuFlag,
+      </if>
+      <if test="averagefenshu != null" >
+        averageFenshu,
+      </if>
+      <if test="groupcode != null" >
+        groupCode,
+      </if>
+      <if test="reportflag != null" >
+        reportFlag,
+      </if>
+      <if test="userid != null" >
+        userId,
+      </if>
+      <if test="createtime != null" >
+        createtime,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="shareimage != null" >
+        shareImage,
+      </if>
+      <if test="url != null" >
+        url,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="subjectcode != null" >
+        #{subjectcode,jdbcType=VARCHAR},
+      </if>
+      <if test="gradecode != null" >
+        #{gradecode,jdbcType=VARCHAR},
+      </if>
+      <if test="teachingcode != null" >
+        #{teachingcode,jdbcType=VARCHAR},
+      </if>
+      <if test="knowledge != null" >
+        #{knowledge,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=DOUBLE},
+      </if>
+      <if test="promoteprice != null" >
+        #{promoteprice,jdbcType=DOUBLE},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="interval != null" >
+        #{interval,jdbcType=BIGINT},
+      </if>
+      <if test="totalfenshu != null" >
+        #{totalfenshu,jdbcType=VARCHAR},
+      </if>
+      <if test="fenshuflag != null" >
+        #{fenshuflag,jdbcType=INTEGER},
+      </if>
+      <if test="averagefenshu != null" >
+        #{averagefenshu,jdbcType=VARCHAR},
+      </if>
+      <if test="groupcode != null" >
+        #{groupcode,jdbcType=VARCHAR},
+      </if>
+      <if test="reportflag != null" >
+        #{reportflag,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null" >
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="shareimage != null" >
+        #{shareimage,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null" >
+        #{url,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mxjzq.entity.CourseFragment" >
+    update course_fragment
+    <set >
+      <if test="subjectcode != null" >
+        subjectcode = #{subjectcode,jdbcType=VARCHAR},
+      </if>
+      <if test="gradecode != null" >
+        gradecode = #{gradecode,jdbcType=VARCHAR},
+      </if>
+      <if test="teachingcode != null" >
+        teachingcode = #{teachingcode,jdbcType=VARCHAR},
+      </if>
+      <if test="knowledge != null" >
+        knowledge = #{knowledge,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        price = #{price,jdbcType=DOUBLE},
+      </if>
+      <if test="promoteprice != null" >
+        promotePrice = #{promoteprice,jdbcType=DOUBLE},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="interval != null" >
+        interval = #{interval,jdbcType=BIGINT},
+      </if>
+      <if test="totalfenshu != null" >
+        totalFenshu = #{totalfenshu,jdbcType=VARCHAR},
+      </if>
+      <if test="fenshuflag != null" >
+        fenshuFlag = #{fenshuflag,jdbcType=INTEGER},
+      </if>
+      <if test="averagefenshu != null" >
+        averageFenshu = #{averagefenshu,jdbcType=VARCHAR},
+      </if>
+      <if test="groupcode != null" >
+        groupCode = #{groupcode,jdbcType=VARCHAR},
+      </if>
+      <if test="reportflag != null" >
+        reportFlag = #{reportflag,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null" >
+        userId = #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        createtime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="shareimage != null" >
+        shareImage = #{shareimage,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null" >
+        url = #{url,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mxjzq.entity.CourseFragment" >
+    update course_fragment
+    set subjectcode = #{subjectcode,jdbcType=VARCHAR},
+      gradecode = #{gradecode,jdbcType=VARCHAR},
+      teachingcode = #{teachingcode,jdbcType=VARCHAR},
+      knowledge = #{knowledge,jdbcType=VARCHAR},
+      title = #{title,jdbcType=VARCHAR},
+      content = #{content,jdbcType=VARCHAR},
+      price = #{price,jdbcType=DOUBLE},
+      promotePrice = #{promoteprice,jdbcType=DOUBLE},
+      status = #{status,jdbcType=VARCHAR},
+      interval = #{interval,jdbcType=BIGINT},
+      totalFenshu = #{totalfenshu,jdbcType=VARCHAR},
+      fenshuFlag = #{fenshuflag,jdbcType=INTEGER},
+      averageFenshu = #{averagefenshu,jdbcType=VARCHAR},
+      groupCode = #{groupcode,jdbcType=VARCHAR},
+      reportFlag = #{reportflag,jdbcType=INTEGER},
+      userId = #{userid,jdbcType=INTEGER},
+      createtime = #{createtime,jdbcType=TIMESTAMP},
+      type = #{type,jdbcType=INTEGER},
+      shareImage = #{shareimage,jdbcType=VARCHAR},
+      url = #{url,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

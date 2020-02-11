@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mxjzq.mapper.ComplexSelectMapper" >
+  
+  <select id="selectSubject" resultType="java.util.HashMap" >
+    select d.subjectcode,GROUP_CONCAT(d.knowledge) as knowledge
+		from (
+		select b.id,b.subjectcode,b.gradecode,b.teachingcode,b.knowledge,b.title,b.content,
+			b.price,b.promotePrice,b.status,b.userId,b.shareImage,b.url,b.interval as intervals,b.totalFenshu,
+		  b.fenshuFlag,b.averageFenshu,b.groupCode,b.reportFlag,b.type,null as headline,null as fightFlag
+		from course_fragment as b where b.userId in(
+		select a.id from user as a where a.organization =#{organization})
+		UNION
+		select c.id,c.subjectcode,c.gradecode,c.teachingcode,c.knowledge,c.title,c.content,
+			c.price,c.promotePrice,c.status,c.userId,c.shareImage,c.url, null as intervals,null as totalFenshu,
+		  null as fenshuFlag,null as averageFenshu,null as groupCode,null as reportFlag,
+		  null as type,c.headline,c.fightFlag
+		 from course_slide as c where c.userId in(
+		select a.id from user as a where a.organization =#{organization})) as d GROUP BY d.d.subjectcode  ORDER BY d.subjectcode
+  </select>
+  <select id="selectKnowledgeCourse" resultType="java.util.HashMap" >
+    select * from (
+		select b.id,b.subjectcode,b.gradecode,b.teachingcode,b.knowledge,b.title,b.content,
+			b.price,b.promotePrice,b.status,b.userId,b.shareImage,b.url,b.interval as intervals,b.totalFenshu,
+		  b.fenshuFlag,b.averageFenshu,b.groupCode,b.reportFlag,b.type,null as headline,null as fightFlag
+		from course_fragment as b where b.knowledge like '%${knowledge}%'
+		UNION
+		select c.id,c.subjectcode,c.gradecode,c.teachingcode,c.knowledge,c.title,c.content,
+			c.price,c.promotePrice,c.status,c.userId,c.shareImage,c.url, null as intervals,null as totalFenshu,
+		  null as fenshuFlag,null as averageFenshu,null as groupCode,null as reportFlag,
+		  null as type,c.headline,c.fightFlag
+		 from course_slide as c where c.knowledge like '%${knowledge}%') as d ORDER BY d.subjectcode
+  </select>
+  
+</mapper>

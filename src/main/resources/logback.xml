@@ -1,0 +1,176 @@
+<!-- 项目日志配置 2018-12-29 by lixingli -->
+
+<configuration scan="true" scanPeriod="60 seconds" debug="false">
+	<!-- 动态日志级别 -->
+	<jmxConfigurator/>
+	<!-- 定义日志文件 输出位置 -->
+	<property name="log_dir" value="logs" />
+	<!-- 日志最大的历史7天  -->
+	<property name="maxHistory" value="7" />
+	<!-- 主机名 -->
+	<property name="hostname" value="${HOSTNAME:-}" />
+	
+	<!-- ConsoleAppender 控制台输出日志 -->
+	<appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>
+				%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level %logger - %msg%n
+			</pattern>
+		</encoder>
+	</appender>
+	
+	<!-- sql级别日志 -->
+	<appender name="sql" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${log_dir}/${hostname}_sql.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<!-- 日志输出位置 -->
+			<fileNamePattern>
+				${log_dir}/archive/${hostname}_sql_%d{yyyy-MM-dd}_%i.log.gz
+			</fileNamePattern>
+			<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<maxFileSize>50MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+			<maxHistory>${maxHistory}</maxHistory>
+		</rollingPolicy>
+		<encoder>
+			<pattern>
+				%relative %d{yyyy-MM-dd HH:mm:ss.SSS} [%X{requestId} %X{processId}] %1.-1level [%logger{10}] [%class{0}] %msg%n
+			</pattern>
+		</encoder>
+	</appender>
+	
+	<!-- sql级别日志 appender -->
+	<appender name="tranTime" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${log_dir}/${hostname}_tranTime.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${log_dir}/archive/${hostname}_tranTime_%d{yyyy-MM-dd}_%i.log.gz</fileNamePattern>
+			<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<maxFileSize>50MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+			<maxHistory>${maxHistory}</maxHistory>
+		</rollingPolicy>
+		<encoder>
+			<pattern>
+				%relative %d{yyyy-MM-dd HH:mm:ss.SSS} [%X{requestId}] %1.-1level %msg%n
+			</pattern>
+		</encoder>
+	</appender>
+	
+	<!-- inbound级别日志 -->
+	<appender name="inbound" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${log_dir}/${hostname}_inbound.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<!-- 日志输出位置 -->
+			<fileNamePattern>
+				${log_dir}/archive/${hostname}_inbound_%d{yyyy-MM-dd}_%i.log.gz
+			</fileNamePattern>
+			<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<maxFileSize>50MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+			<maxHistory>${maxHistory}</maxHistory>
+		</rollingPolicy>
+		<encoder>
+			<pattern>
+				%relative %d{yyyy-MM-dd HH:mm:ss.SSS} [%X{requestId} %X{processId}] %1.-1level [%logger{10}] [%class{0}] %msg%n
+			</pattern>
+		</encoder>
+	</appender>
+	
+	<!-- inbound级别日志 appender -->
+	<appender name="outbound" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${log_dir}/${hostname}_outbound.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${log_dir}/archive/${hostname}_outbound_%d{yyyy-MM-dd}_%i.log.gz</fileNamePattern>
+			<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<maxFileSize>50MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+			<maxHistory>${maxHistory}</maxHistory>
+		</rollingPolicy>
+		<encoder>
+			<pattern>
+				%relative %d{yyyy-MM-dd HH:mm:ss.SSS} [%X{requestId} %X{processId}] %1.-1level [%logger{10}] [%class{0}] %msg%n
+			</pattern>
+		</encoder>
+	</appender>
+	
+	<!-- all级别日志 -->
+	<appender name="all" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${log_dir}/${hostname}_all.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<!-- 日志输出位置 -->
+			<fileNamePattern>
+				${log_dir}/archive/${hostname}_all_%d{yyyy-MM-dd}_%i.log.gz
+			</fileNamePattern>
+			<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<maxFileSize>50MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+			<maxHistory>${maxHistory}</maxHistory>
+		</rollingPolicy>
+		<encoder>
+			<pattern>
+				%relative %d{yyyy-MM-dd HH:mm:ss.SSS} [%X{requestId} %X{processId} %X{service.timing}] %1.-1level [%logger{5}] [%class{0}] %msg%n
+			</pattern>
+		</encoder>
+	</appender>
+	
+	<!-- Tran time 日志 -->
+	<logger name="com.bocom.dcportal.base.interceptor.TranTimeInterceptor" additivity="false">
+		<level value="DEBUG"/>
+		<appender-ref ref="tranTime" />
+		<appender-ref ref="console"  />
+	</logger>
+	
+	<!-- ws send message 日志 -->
+	<logger name="org.springframework.ws.client" additivity="false">
+		<level value="TRACE" />
+		<appender-ref  ref="outbound"/>
+	</logger>
+	
+	<!--  -->
+	<logger name="springfox.documentation" additivity="false">
+		<level value="error" />
+		<appender-ref ref="outbound" />
+		<appender-ref ref="console" />
+	</logger>
+	
+	<logger name="org.springframework" additivity="false" >
+		<level value="error" />
+		<appender-ref ref="outbound" />
+		<appender-ref ref="console" />
+	</logger>
+	
+	<logger name="ch.qos.logback" additivity="false" >
+		<level value="error" />
+		<appender-ref ref="outbound" />
+		<appender-ref ref="console" />
+	</logger>
+	
+	<logger name="org.mybatis.spring" additivity="false" >
+		<level value="INFO" />
+		<appender-ref ref="outbound" />
+		<appender-ref ref="console" />
+	</logger>
+	
+	<!-- ws recevice message日志 -->
+	<logger name="org.springframework.ws.server" additivity="false">
+		<level value="TRACE" />
+		<appender-ref ref="inbound" />
+	</logger>
+	<logger name="org.apache.commons.beanutils" additivity="false">
+		<level value="ERROR" />
+	</logger>
+	<logger name="org.dozer" additivity="false">
+		<level value="ERROR" />
+	</logger>
+	
+	<!-- root级别debug -->
+	<root>
+		<!-- 打印info级别以上日志 -->
+		<level value="INFO" />
+		<!-- 控制台输出 -->
+		<appender-ref ref="console" />
+		<!-- 文件输出 -->
+		<appender-ref ref="all" />
+	</root>	
+</configuration>
+	

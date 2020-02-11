@@ -1,0 +1,474 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mxjzq.mapper.StudentMapper" >
+  <resultMap id="BaseResultMap" type="com.mxjzq.entity.Student" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="provinceId" property="provinceid" jdbcType="INTEGER" />
+    <result column="cityId" property="cityid" jdbcType="INTEGER" />
+    <result column="areaId" property="areaid" jdbcType="INTEGER" />
+    <result column="gradeCode" property="gradecode" jdbcType="VARCHAR" />
+    <result column="xuezhi" property="xuezhi" jdbcType="INTEGER" />
+    <result column="sex" property="sex" jdbcType="INTEGER" />
+    <result column="school" property="school" jdbcType="VARCHAR" />
+    <result column="schoolId" property="schoolid" jdbcType="INTEGER" />
+    <result column="nickname" property="nickname" jdbcType="VARCHAR" />
+    <result column="organization" property="organization" jdbcType="INTEGER" />
+    <result column="membership" property="membership" jdbcType="INTEGER" />
+    <result column="startEngGrade" property="startenggrade" jdbcType="INTEGER" />
+    <result column="openId" property="openid" jdbcType="VARCHAR" />
+    <result column="unionId" property="unionid" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="INTEGER" />
+    <result column="goodHabits" property="goodhabits" jdbcType="VARCHAR" />
+    <result column="badHabits" property="badhabits" jdbcType="VARCHAR" />
+    <result column="engListeningLevel" property="englisteninglevel" jdbcType="INTEGER" />
+    <result column="engWordLevel" property="engwordlevel" jdbcType="INTEGER" />
+    <result column="engGrammarLevel" property="enggrammarlevel" jdbcType="INTEGER" />
+    <result column="engReadingLevel" property="engreadinglevel" jdbcType="INTEGER" />
+    <result column="mathComputeLevel" property="mathcomputelevel" jdbcType="INTEGER" />
+    <result column="mathConceptLevel" property="mathconceptlevel" jdbcType="INTEGER" />
+    <result column="mathApplicationLevel" property="mathapplicationlevel" jdbcType="INTEGER" />
+    <result column="mathOlympicLevel" property="matholympiclevel" jdbcType="INTEGER" />
+    <result column="chineseWordLevel" property="chinesewordlevel" jdbcType="INTEGER" />
+    <result column="chineseGrammarLevel" property="chinesegrammarlevel" jdbcType="INTEGER" />
+    <result column="chineseReadingLevel" property="chinesereadinglevel" jdbcType="INTEGER" />
+    <result column="chineseWritingLevel" property="chinesewritinglevel" jdbcType="INTEGER" />
+    <result column="accessStatus" property="accessstatus" jdbcType="TINYINT" />
+    <result column="is_delete" property="isDelete" jdbcType="TINYINT" />
+    <result column="updateTime" property="updatetime" jdbcType="TIMESTAMP" />
+    <result column="creator" property="creator" jdbcType="VARCHAR" />
+    <result column="updator" property="updator" jdbcType="VARCHAR" />
+    <result column="createTime" property="createtime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, phone, provinceId, cityId, areaId, gradeCode, xuezhi, sex, school, schoolId, 
+    nickname, organization, membership, startEngGrade, openId, unionId, type, goodHabits, 
+    badHabits, engListeningLevel, engWordLevel, engGrammarLevel, engReadingLevel, mathComputeLevel, 
+    mathConceptLevel, mathApplicationLevel, mathOlympicLevel, chineseWordLevel, chineseGrammarLevel, 
+    chineseReadingLevel, chineseWritingLevel, accessStatus, is_delete, updateTime, creator, 
+    updator, createTime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from student
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from student
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.mxjzq.entity.Student" >
+    insert into student (id, phone, provinceId, 
+      cityId, areaId, gradeCode, 
+      xuezhi, sex, school, 
+      schoolId, nickname, organization, 
+      membership, startEngGrade, openId, 
+      unionId, type, goodHabits, 
+      badHabits, engListeningLevel, engWordLevel, 
+      engGrammarLevel, engReadingLevel, mathComputeLevel, 
+      mathConceptLevel, mathApplicationLevel, 
+      mathOlympicLevel, chineseWordLevel, chineseGrammarLevel, 
+      chineseReadingLevel, chineseWritingLevel, 
+      accessStatus, is_delete, updateTime, 
+      creator, updator, createTime
+      )
+    values (#{id,jdbcType=INTEGER}, #{phone,jdbcType=VARCHAR}, #{provinceid,jdbcType=INTEGER}, 
+      #{cityid,jdbcType=INTEGER}, #{areaid,jdbcType=INTEGER}, #{gradecode,jdbcType=VARCHAR}, 
+      #{xuezhi,jdbcType=INTEGER}, #{sex,jdbcType=INTEGER}, #{school,jdbcType=VARCHAR}, 
+      #{schoolid,jdbcType=INTEGER}, #{nickname,jdbcType=VARCHAR}, #{organization,jdbcType=INTEGER}, 
+      #{membership,jdbcType=INTEGER}, #{startenggrade,jdbcType=INTEGER}, #{openid,jdbcType=VARCHAR}, 
+      #{unionid,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER}, #{goodhabits,jdbcType=VARCHAR}, 
+      #{badhabits,jdbcType=VARCHAR}, #{englisteninglevel,jdbcType=INTEGER}, #{engwordlevel,jdbcType=INTEGER}, 
+      #{enggrammarlevel,jdbcType=INTEGER}, #{engreadinglevel,jdbcType=INTEGER}, #{mathcomputelevel,jdbcType=INTEGER}, 
+      #{mathconceptlevel,jdbcType=INTEGER}, #{mathapplicationlevel,jdbcType=INTEGER}, 
+      #{matholympiclevel,jdbcType=INTEGER}, #{chinesewordlevel,jdbcType=INTEGER}, #{chinesegrammarlevel,jdbcType=INTEGER}, 
+      #{chinesereadinglevel,jdbcType=INTEGER}, #{chinesewritinglevel,jdbcType=INTEGER}, 
+      #{accessstatus,jdbcType=TINYINT}, #{isDelete,jdbcType=TINYINT}, #{updatetime,jdbcType=TIMESTAMP}, 
+      #{creator,jdbcType=VARCHAR}, #{updator,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.mxjzq.entity.Student" >
+    insert into student
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="phone != null" >
+        phone,
+      </if>
+      <if test="provinceid != null" >
+        provinceId,
+      </if>
+      <if test="cityid != null" >
+        cityId,
+      </if>
+      <if test="areaid != null" >
+        areaId,
+      </if>
+      <if test="gradecode != null" >
+        gradeCode,
+      </if>
+      <if test="xuezhi != null" >
+        xuezhi,
+      </if>
+      <if test="sex != null" >
+        sex,
+      </if>
+      <if test="school != null" >
+        school,
+      </if>
+      <if test="schoolid != null" >
+        schoolId,
+      </if>
+      <if test="nickname != null" >
+        nickname,
+      </if>
+      <if test="organization != null" >
+        organization,
+      </if>
+      <if test="membership != null" >
+        membership,
+      </if>
+      <if test="startenggrade != null" >
+        startEngGrade,
+      </if>
+      <if test="openid != null" >
+        openId,
+      </if>
+      <if test="unionid != null" >
+        unionId,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="goodhabits != null" >
+        goodHabits,
+      </if>
+      <if test="badhabits != null" >
+        badHabits,
+      </if>
+      <if test="englisteninglevel != null" >
+        engListeningLevel,
+      </if>
+      <if test="engwordlevel != null" >
+        engWordLevel,
+      </if>
+      <if test="enggrammarlevel != null" >
+        engGrammarLevel,
+      </if>
+      <if test="engreadinglevel != null" >
+        engReadingLevel,
+      </if>
+      <if test="mathcomputelevel != null" >
+        mathComputeLevel,
+      </if>
+      <if test="mathconceptlevel != null" >
+        mathConceptLevel,
+      </if>
+      <if test="mathapplicationlevel != null" >
+        mathApplicationLevel,
+      </if>
+      <if test="matholympiclevel != null" >
+        mathOlympicLevel,
+      </if>
+      <if test="chinesewordlevel != null" >
+        chineseWordLevel,
+      </if>
+      <if test="chinesegrammarlevel != null" >
+        chineseGrammarLevel,
+      </if>
+      <if test="chinesereadinglevel != null" >
+        chineseReadingLevel,
+      </if>
+      <if test="chinesewritinglevel != null" >
+        chineseWritingLevel,
+      </if>
+      <if test="accessstatus != null" >
+        accessStatus,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+      <if test="updatetime != null" >
+        updateTime,
+      </if>
+      <if test="creator != null" >
+        creator,
+      </if>
+      <if test="updator != null" >
+        updator,
+      </if>
+      <if test="createtime != null" >
+        createTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="provinceid != null" >
+        #{provinceid,jdbcType=INTEGER},
+      </if>
+      <if test="cityid != null" >
+        #{cityid,jdbcType=INTEGER},
+      </if>
+      <if test="areaid != null" >
+        #{areaid,jdbcType=INTEGER},
+      </if>
+      <if test="gradecode != null" >
+        #{gradecode,jdbcType=VARCHAR},
+      </if>
+      <if test="xuezhi != null" >
+        #{xuezhi,jdbcType=INTEGER},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=INTEGER},
+      </if>
+      <if test="school != null" >
+        #{school,jdbcType=VARCHAR},
+      </if>
+      <if test="schoolid != null" >
+        #{schoolid,jdbcType=INTEGER},
+      </if>
+      <if test="nickname != null" >
+        #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="organization != null" >
+        #{organization,jdbcType=INTEGER},
+      </if>
+      <if test="membership != null" >
+        #{membership,jdbcType=INTEGER},
+      </if>
+      <if test="startenggrade != null" >
+        #{startenggrade,jdbcType=INTEGER},
+      </if>
+      <if test="openid != null" >
+        #{openid,jdbcType=VARCHAR},
+      </if>
+      <if test="unionid != null" >
+        #{unionid,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="goodhabits != null" >
+        #{goodhabits,jdbcType=VARCHAR},
+      </if>
+      <if test="badhabits != null" >
+        #{badhabits,jdbcType=VARCHAR},
+      </if>
+      <if test="englisteninglevel != null" >
+        #{englisteninglevel,jdbcType=INTEGER},
+      </if>
+      <if test="engwordlevel != null" >
+        #{engwordlevel,jdbcType=INTEGER},
+      </if>
+      <if test="enggrammarlevel != null" >
+        #{enggrammarlevel,jdbcType=INTEGER},
+      </if>
+      <if test="engreadinglevel != null" >
+        #{engreadinglevel,jdbcType=INTEGER},
+      </if>
+      <if test="mathcomputelevel != null" >
+        #{mathcomputelevel,jdbcType=INTEGER},
+      </if>
+      <if test="mathconceptlevel != null" >
+        #{mathconceptlevel,jdbcType=INTEGER},
+      </if>
+      <if test="mathapplicationlevel != null" >
+        #{mathapplicationlevel,jdbcType=INTEGER},
+      </if>
+      <if test="matholympiclevel != null" >
+        #{matholympiclevel,jdbcType=INTEGER},
+      </if>
+      <if test="chinesewordlevel != null" >
+        #{chinesewordlevel,jdbcType=INTEGER},
+      </if>
+      <if test="chinesegrammarlevel != null" >
+        #{chinesegrammarlevel,jdbcType=INTEGER},
+      </if>
+      <if test="chinesereadinglevel != null" >
+        #{chinesereadinglevel,jdbcType=INTEGER},
+      </if>
+      <if test="chinesewritinglevel != null" >
+        #{chinesewritinglevel,jdbcType=INTEGER},
+      </if>
+      <if test="accessstatus != null" >
+        #{accessstatus,jdbcType=TINYINT},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=TINYINT},
+      </if>
+      <if test="updatetime != null" >
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creator != null" >
+        #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="updator != null" >
+        #{updator,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mxjzq.entity.Student" >
+    update student
+    <set >
+      <if test="phone != null" >
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="provinceid != null" >
+        provinceId = #{provinceid,jdbcType=INTEGER},
+      </if>
+      <if test="cityid != null" >
+        cityId = #{cityid,jdbcType=INTEGER},
+      </if>
+      <if test="areaid != null" >
+        areaId = #{areaid,jdbcType=INTEGER},
+      </if>
+      <if test="gradecode != null" >
+        gradeCode = #{gradecode,jdbcType=VARCHAR},
+      </if>
+      <if test="xuezhi != null" >
+        xuezhi = #{xuezhi,jdbcType=INTEGER},
+      </if>
+      <if test="sex != null" >
+        sex = #{sex,jdbcType=INTEGER},
+      </if>
+      <if test="school != null" >
+        school = #{school,jdbcType=VARCHAR},
+      </if>
+      <if test="schoolid != null" >
+        schoolId = #{schoolid,jdbcType=INTEGER},
+      </if>
+      <if test="nickname != null" >
+        nickname = #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="organization != null" >
+        organization = #{organization,jdbcType=INTEGER},
+      </if>
+      <if test="membership != null" >
+        membership = #{membership,jdbcType=INTEGER},
+      </if>
+      <if test="startenggrade != null" >
+        startEngGrade = #{startenggrade,jdbcType=INTEGER},
+      </if>
+      <if test="openid != null" >
+        openId = #{openid,jdbcType=VARCHAR},
+      </if>
+      <if test="unionid != null" >
+        unionId = #{unionid,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="goodhabits != null" >
+        goodHabits = #{goodhabits,jdbcType=VARCHAR},
+      </if>
+      <if test="badhabits != null" >
+        badHabits = #{badhabits,jdbcType=VARCHAR},
+      </if>
+      <if test="englisteninglevel != null" >
+        engListeningLevel = #{englisteninglevel,jdbcType=INTEGER},
+      </if>
+      <if test="engwordlevel != null" >
+        engWordLevel = #{engwordlevel,jdbcType=INTEGER},
+      </if>
+      <if test="enggrammarlevel != null" >
+        engGrammarLevel = #{enggrammarlevel,jdbcType=INTEGER},
+      </if>
+      <if test="engreadinglevel != null" >
+        engReadingLevel = #{engreadinglevel,jdbcType=INTEGER},
+      </if>
+      <if test="mathcomputelevel != null" >
+        mathComputeLevel = #{mathcomputelevel,jdbcType=INTEGER},
+      </if>
+      <if test="mathconceptlevel != null" >
+        mathConceptLevel = #{mathconceptlevel,jdbcType=INTEGER},
+      </if>
+      <if test="mathapplicationlevel != null" >
+        mathApplicationLevel = #{mathapplicationlevel,jdbcType=INTEGER},
+      </if>
+      <if test="matholympiclevel != null" >
+        mathOlympicLevel = #{matholympiclevel,jdbcType=INTEGER},
+      </if>
+      <if test="chinesewordlevel != null" >
+        chineseWordLevel = #{chinesewordlevel,jdbcType=INTEGER},
+      </if>
+      <if test="chinesegrammarlevel != null" >
+        chineseGrammarLevel = #{chinesegrammarlevel,jdbcType=INTEGER},
+      </if>
+      <if test="chinesereadinglevel != null" >
+        chineseReadingLevel = #{chinesereadinglevel,jdbcType=INTEGER},
+      </if>
+      <if test="chinesewritinglevel != null" >
+        chineseWritingLevel = #{chinesewritinglevel,jdbcType=INTEGER},
+      </if>
+      <if test="accessstatus != null" >
+        accessStatus = #{accessstatus,jdbcType=TINYINT},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=TINYINT},
+      </if>
+      <if test="updatetime != null" >
+        updateTime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creator != null" >
+        creator = #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="updator != null" >
+        updator = #{updator,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        createTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mxjzq.entity.Student" >
+    update student
+    set phone = #{phone,jdbcType=VARCHAR},
+      provinceId = #{provinceid,jdbcType=INTEGER},
+      cityId = #{cityid,jdbcType=INTEGER},
+      areaId = #{areaid,jdbcType=INTEGER},
+      gradeCode = #{gradecode,jdbcType=VARCHAR},
+      xuezhi = #{xuezhi,jdbcType=INTEGER},
+      sex = #{sex,jdbcType=INTEGER},
+      school = #{school,jdbcType=VARCHAR},
+      schoolId = #{schoolid,jdbcType=INTEGER},
+      nickname = #{nickname,jdbcType=VARCHAR},
+      organization = #{organization,jdbcType=INTEGER},
+      membership = #{membership,jdbcType=INTEGER},
+      startEngGrade = #{startenggrade,jdbcType=INTEGER},
+      openId = #{openid,jdbcType=VARCHAR},
+      unionId = #{unionid,jdbcType=VARCHAR},
+      type = #{type,jdbcType=INTEGER},
+      goodHabits = #{goodhabits,jdbcType=VARCHAR},
+      badHabits = #{badhabits,jdbcType=VARCHAR},
+      engListeningLevel = #{englisteninglevel,jdbcType=INTEGER},
+      engWordLevel = #{engwordlevel,jdbcType=INTEGER},
+      engGrammarLevel = #{enggrammarlevel,jdbcType=INTEGER},
+      engReadingLevel = #{engreadinglevel,jdbcType=INTEGER},
+      mathComputeLevel = #{mathcomputelevel,jdbcType=INTEGER},
+      mathConceptLevel = #{mathconceptlevel,jdbcType=INTEGER},
+      mathApplicationLevel = #{mathapplicationlevel,jdbcType=INTEGER},
+      mathOlympicLevel = #{matholympiclevel,jdbcType=INTEGER},
+      chineseWordLevel = #{chinesewordlevel,jdbcType=INTEGER},
+      chineseGrammarLevel = #{chinesegrammarlevel,jdbcType=INTEGER},
+      chineseReadingLevel = #{chinesereadinglevel,jdbcType=INTEGER},
+      chineseWritingLevel = #{chinesewritinglevel,jdbcType=INTEGER},
+      accessStatus = #{accessstatus,jdbcType=TINYINT},
+      is_delete = #{isDelete,jdbcType=TINYINT},
+      updateTime = #{updatetime,jdbcType=TIMESTAMP},
+      creator = #{creator,jdbcType=VARCHAR},
+      updator = #{updator,jdbcType=VARCHAR},
+      createTime = #{createtime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
